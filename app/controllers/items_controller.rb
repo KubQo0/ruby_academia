@@ -19,4 +19,9 @@ class ItemsController < ApplicationController
     @item.update(title: params[:title], expected_cost: params[:expected_cost], is_done: params[:is_done])
     redirect_to item_url(@item)
   end
+  def destroy
+    @item = Item.find(params[:id])
+    @item.destroy
+    redirect_to items_url
+  end
 end

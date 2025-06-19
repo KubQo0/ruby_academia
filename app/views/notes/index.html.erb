@@ -17,6 +17,9 @@
       <td><%= note.title %></td>
       <td><%= note.body %></td>
       <td><%= link_to "edit", edit_note_path(note) %></td>
+      <td>
+        <%= button_to "detele", note_path(note), method: :delete %>
+      </td>
     </tr>
   <% end %>
   </tbody>
