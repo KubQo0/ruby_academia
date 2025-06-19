@@ -11,4 +11,8 @@ class ItemsController < ApplicationController
     @item = Item.create(title: params[:title], expected_cost: params[:expected_cost], is_done: params[:is_done])
     redirect_to item_url(@item)
   end
+  def edit
+  end
+  def update
+  end
 end

@@ -6,6 +6,7 @@
     <th>ID</th>
     <th>title</th>
     <th>body</th>
+    <th>actions</th>
   </tr>
   </thead>
   <tbody>
@@ -15,6 +16,7 @@
       <td><%= link_to note.title, note_path(note) %></td>
       <td><%= note.title %></td>
       <td><%= note.body %></td>
+      <td><%= link_to "edit", edit_note_path(note) %></td>
     </tr>
   <% end %>
   </tbody>

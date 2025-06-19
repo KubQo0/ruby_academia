@@ -5,11 +5,15 @@ Rails.application.routes.draw do
   get "notes/new", to: "notes#new"
   post "notes", to: "notes#create"
   get "notes/:id", to: "notes#show", as: :note
+  patch "notes/:id", to: "notes#update"
+  get "notes/:id/edit", to: "notes#edit", as: :edit_note
 
   get "items", to: "items#index"
   get "items/new", to: "items#new"
   post "items", to: "items#create"
   get "items/:id", to: "items#show", as: :item
+  patch "items/:id", to: "items#update"
+  get "items/:id/edit", to: "items#edit", as: :edit_item
 
   root "pages#home"
 
