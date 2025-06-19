@@ -1,0 +1,19 @@
+<h1>Notes</h1>
+<table>
+  <thead>
+  <tr>
+    <th>ID</th>
+    <th>name</th>
+    <th>body</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+    <% @notes.each do |note| %>
+      <td><%= note.id %></td>
+      <td><%= note.title %></td>
+      <td><%= note.body %></td>
+    <% end %>
+  </tr>
+  </tbody>
+</table>
