@@ -1,0 +1,8 @@
+<h1>Moj profil</h1>
+<p>meno je <%= @user.name %></p>
+<% @user.hobby.each do |h| %>
+  <li><%= h %></li>
+<% end %>
+<% if @user.hidden %>
+<p>this was hidden</p>
+<% end %>
