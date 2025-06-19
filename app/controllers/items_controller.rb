@@ -12,7 +12,11 @@ class ItemsController < ApplicationController
     redirect_to item_url(@item)
   end
   def edit
+    @item = Item.find(params[:id])
   end
   def update
+    @item = Item.find(params[:id])
+    @item.update(title: params[:title], expected_cost: params[:expected_cost], is_done: params[:is_done])
+    redirect_to item_url(@item)
   end
 end
