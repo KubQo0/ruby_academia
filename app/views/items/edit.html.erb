@@ -1,16 +1,2 @@
-<%= form_with model: @item do |f| %>
-  <div>
-    <%= f.label :title %>
-    <%= f.text_field :title %>
-  </div>
-  <div>
-    <%= f.label :expected_cost %>
-    <%= f.number_field :expected_cost %>
-  </div>
-  <div>
-    <%= f.label :is_done %>
-    <%= f.check_box :is_done %>
-  </div>
-  <%= f.submit %>
-<% end %>
+<%= render 'form', submit_text: 'update' %>
 <%= link_to "back", items_path %>

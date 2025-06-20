@@ -1,12 +1,2 @@
-<%= form_with model: @note do |f| %>
-  <div>
-    <%= f.label :title %>
-    <%= f.text_field :title %>
-  </div>
-  <div>
-    <%= f.label :body %>
-    <%= f.text_area :body %>
-  </div>
-  <%= f.submit %>
-<% end %>
-<%= link_to "back", notes_path %>
+<%= render partial: 'form', locals: { submit_text: 'update' } %>
+<%= link_to "back", note_path %>
