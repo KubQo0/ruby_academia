@@ -1,12 +1,12 @@
-<%= form_with url: note_path, method: 'patch' do |f| %>
+<%= form_with model: @note do |f| %>
   <div>
     <%= f.label :title %>
-    <%= f.text_field :title, value: @note.title %>
+    <%= f.text_field :title %>
   </div>
   <div>
     <%= f.label :body %>
-    <%= f.text_area :body, value: @note.body %>
+    <%= f.text_area :body %>
   </div>
-  <%= f.submit 'update' %>
+  <%= f.submit %>
 <% end %>
 <%= link_to "back", notes_path %>
