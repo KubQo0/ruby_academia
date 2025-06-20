@@ -1,22 +1,24 @@
-<%= form_with model: @item do |f| %>
+<%= form_with model: @item, class: 'grid grid-cols-1 gap-y-6' do |f| %>
   <% if @item.errors.any? %>
     <ul>
       <% @item.errors.each do |e| %>
-        <li><%= e.full_message %></li>
+        <li class="px-4 py-2 text-rose-600 border border-rose-500 bg-rose-100 mt-2 rounded-md"><%= e.full_message %></li>
       <% end %>
     </ul>
   <% end %>
   <div>
-    <%= f.label :title %>
-    <%= f.text_field :title %>
+    <%= f.label :title, class: 'text-sm font-semibold'  %>
+    <%= f.text_field :title, class: 'mt-1 w-full border-0 ring-1 px-3 py-1.5 ring-gray-400 rounded-md' %>
   </div>
   <div>
-    <%= f.label :expected_cost %>
-    <%= f.number_field :expected_cost %>
+    <%= f.label :expected_cost, class: 'text-sm font-semibold'  %>
+    <%= f.number_field :expected_cost, class: 'mt-1 w-full border-0 ring-1 px-3 py-1.5 ring-gray-400 rounded-md' %>
   </div>
   <div>
-    <%= f.label :is_done %>
-    <%= f.check_box :is_done %>
+    <%= f.label :is_done, class: 'text-sm font-semibold'  %>
+    <%= f.check_box :is_done, class: 'mx-5' %>
   </div>
-  <%= f.submit submit_text %>
+  <div>
+    <%= f.submit submit_text, class: 'px-4 py-2 text-white bg-blue-500 rounded-md' %>
+  </div>
 <% end %>

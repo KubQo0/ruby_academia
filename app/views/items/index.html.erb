@@ -1,27 +1,32 @@
-<h1>Items</h1>
-<%= link_to "new", items_new_path %>
-<table>
-  <thead>
-  <tr>
-    <th>ID</th>
-    <th>title</th>
-    <th>expected cost</th>
-    <th>is done</th>
-    <th>actions</th>
-  </tr>
-  </thead>
-  <tbody>
+<div class="flex justify-between items-center">
+  <h1 class="text-4xl font-semibold">Items</h1>
+  <%= link_to "new item", items_new_path, class: 'px-3 py-3 bg-blue-500 text-white rounded-md'%>
+</div>
+
+<section class="mt-6 grid grid-cols-1 sm:grid-cols-3 gap-x-8 xl:grid-cols-6 gap-y-4">
   <% @items.each do |item| %>
-    <tr>
-      <td><%= item.id %></td>
-      <td><%= link_to item.title, item_path(item) %></td>
-      <td><%= item.expected_cost %></td>
-      <td><%= item.is_done %></td>
-      <td><%= link_to "edit", edit_item_path(item) %></td>
-      <td>
-        <%= button_to "delete", item_path(item), method: :delete%>
-      </td>
-    </tr>
+    <% if item.is_done? %>
+      <div class="flex justify-between items-center shadow-md p-4 border-emerald-300 border-t-4 rounded-md transition duration-300 hover:shadow-xl">
+        <div>
+          <h2 class="text-lg font-medium"><%= link_to item.title, item_path(item) %></h2>
+          <p><%= item.expected_cost %></p>
+        </div>
+        <div>
+          <%= button_to "delete", item_path(item), method: :delete, class: 'mx-1 px-3 py-1.5 border border-rose-400 bg-rose-100 text-rose-400 rounded-md'%>
+        </div>
+      </div>
+    <% else %>
+      <div class="flex justify-between items-center shadow-md p-4 border-gray-400 border-t-4 rounded-md transition duration-300 hover:shadow-xl">
+        <div>
+          <h2 class="text-lg font-medium"><%= link_to item.title, item_path(item) %></h2>
+          <p><%= item.expected_cost %></p>
+        </div>
+        <div>
+          <div class="flex">
+            <%= button_to "done", item, method: 'patch', params: { item: { is_done: true } }, class: 'mx-1 px-3 py-1.5 border border-gray-600 bg-gray-200 rounded-md'%>
+          </div>
+        </div>
+      </div>
+    <% end %>
   <% end %>
-  </tbody>
-</table>
+</section>

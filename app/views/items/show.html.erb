@@ -1,5 +1,7 @@
-<%= link_to "edit", edit_item_path %>
-<h1><%= @item.title %></h1>
-<p><%= @item.expected_cost %></p>
-<p><%= @item.is_done %></p>
-<%= link_to "back", items_path %>
+<div class="flex justify-between">
+  <%= link_to "<- back", items_path, class: 'mx-1 px-3 py-1.5 border border-gray-600 bg-gray-200 text-gray-600 rounded-md' %>
+  <%= link_to "edit", edit_item_path, class: 'px-3 py-1.5 text-white bg-blue-500 rounded-md' %>
+</div>
+<h1 class="mt-4 text-2xl font-semibold"><%= @item.title %></h1>
+<p class="mt-4"><%= @item.expected_cost %></p>
+<p class="mt-4"><%= @item.is_done %></p>
