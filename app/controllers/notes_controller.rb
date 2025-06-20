@@ -10,7 +10,7 @@ class NotesController < ApplicationController
     @note = Note.new
   end
   def create
-    @note = Note.create(title: params[:note][:title], body: params[:note][:body])
+    @note = Note.create(note_params)
     redirect_to note_url(@note)
   end
   def edit
@@ -18,12 +18,17 @@ class NotesController < ApplicationController
   end
   def update
     @note = Note.find(params[:id])
-    @note.update(title: params[:note][:title], body: params[:note][:body])
+    @note.update(note_params)
     redirect_to note_url(@note)
   end
   def destroy
     @note = Note.find(params[:id])
     @note.destroy
     redirect_to notes_url
+  end
+
+  private
+  def note_params
+    params.require(:note).permit(:title, :body)
   end
 end

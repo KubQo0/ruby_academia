@@ -9,7 +9,7 @@ class ItemsController < ApplicationController
     @item = Item.new
   end
   def create
-    @item = Item.create(title: params[:item][:title], expected_cost: params[:item][:expected_cost], is_done: params[:item][:is_done])
+    @item = Item.create(item_params)
     redirect_to item_url(@item)
   end
   def edit
@@ -17,12 +17,17 @@ class ItemsController < ApplicationController
   end
   def update
     @item = Item.find(params[:id])
-    @item.update(title: params[:item][:title], expected_cost: params[:item][:expected_cost], is_done: params[:item][:is_done])
+    @item.update(item_params)
     redirect_to item_url(@item)
   end
   def destroy
     @item = Item.find(params[:id])
     @item.destroy
     redirect_to items_url
+  end
+
+  private
+  def item_params
+    params.require(:item).permit(:title, :expected_cost, :is_done)
   end
 end
