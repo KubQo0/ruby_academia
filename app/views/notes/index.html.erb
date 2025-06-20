@@ -1,9 +1,12 @@
-<h1>Notes</h1>
-<%= link_to "new", notes_new_path %>
-<table>
+<div class="flex justify-between items-center">
+  <h1 class="text-4xl font-semibold">Notes</h1>
+  <%= link_to "new note", notes_new_path, class: 'px-3 py-3 bg-blue-500 text-white rounded-md'%>
+</div>
+
+<table class="mt-6 w-full">
   <thead>
-  <tr>
-    <th>ID</th>
+  <tr class="bg-gray-100 text-left ">
+    <th class="py-3 px-3">ID</th>
     <th>title</th>
     <th>body</th>
     <th>actions</th>
@@ -11,14 +14,15 @@
   </thead>
   <tbody>
   <% @notes.each do |note| %>
-    <tr>
-      <td><%= note.id %></td>
+    <tr class="border-top border-grey-100">
+      <td class="py-2 px-3"><%= note.id %></td>
       <td><%= link_to note.title, note_path(note) %></td>
-      <td><%= note.title %></td>
       <td><%= note.body %></td>
-      <td><%= link_to "edit", edit_note_path(note) %></td>
       <td>
-        <%= button_to "detele", note_path(note), method: :delete %>
+        <div class="flex">
+          <%= link_to "edit", edit_note_path(note), class: 'mx-1 px-3 py-1.5 border border-gray-600 bg-gray-200 rounded-md'%>
+          <%= button_to "detele", note_path(note), method: :delete, class: 'mx-1 px-3 py-1.5 border border-rose-400 bg-rose-100 text-rose-400 rounded-md'%>
+        </div>
       </td>
     </tr>
   <% end %>
