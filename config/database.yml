@@ -28,5 +28,10 @@ test:
 # Similarly, if you deploy your application as a Docker container, you must
 # ensure the database is located in a persisted volume.
 production:
-  <<: *default
+  adapter: postgresql
+  encoding: unicode
+  database: notes_production
+  username: notes
+  password: <%= ENV["NOTES_DATABASE_PASSWORD"] %>
+  #<<: *default
   # database: path/to/persistent/storage/production.sqlite3
