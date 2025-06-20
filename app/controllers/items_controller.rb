@@ -1,6 +1,6 @@
 class ItemsController < ApplicationController
+  before_action :set_item, only: [:show, :edit, :update, :destroy]
   def show
-    @item = Item.find(params[:id])
   end
   def index
     @items = Item.all
@@ -13,15 +13,12 @@ class ItemsController < ApplicationController
     redirect_to item_url(@item)
   end
   def edit
-    @item = Item.find(params[:id])
   end
   def update
-    @item = Item.find(params[:id])
     @item.update(item_params)
     redirect_to item_url(@item)
   end
   def destroy
-    @item = Item.find(params[:id])
     @item.destroy
     redirect_to items_url
   end
@@ -29,5 +26,8 @@ class ItemsController < ApplicationController
   private
   def item_params
     params.require(:item).permit(:title, :expected_cost, :is_done)
+  end
+  def set_item
+    @item = Item.find(params[:id])
   end
 end
